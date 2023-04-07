@@ -1,0 +1,29 @@
+{% extends 'app.html' %}
+
+{% block data %}
+
+<div class="details" style="background-image: url(https://www.themoviedb.org/t/p/original/{{metadata[8]}});background-repeat: no-repeat;background-size: cover;">
+    <br><br>
+    <h2>{{ title }}</h2>
+    <div class="aboutmov">
+        <h3>Overview:</h3><br>
+        <p><b>Tagline :</b> {{ metadata[0] }} <br><br> {{ about }}</p>
+
+        <br><br>
+
+        <h3>Movie Info:</h3><br>
+        <p>
+                <u><b>Genres :</b></u> {{ metadata[2][0] }}, {{ metadata[2][1] }} <br><br>
+                <u><b>User Score :</b></u> {{ metadata[3] }}/10 <br><br>
+                <u><b>Runtime :</b></u> {{ metadata[4] }} minutes <br><br>
+                <u><b>Release Date :</b></u> {{ metadata[5] }} <br><br>
+                <u><b>Director :</b></u> {{ metadata[7] }} <br><br>
+                <u><b>Movie Cast :</b></u> {{ metadata[6][0] }}, {{ metadata[6][1] }}, {{ metadata[6][2] }}, etc... <br><br>
+                <u><b>Movie trailer :</b></u> <a href="https://www.youtube.com/watch?v={{metadata[9]}}"> https://www.youtube.com/watch?v={{metadata[9]}} </a><br><br> 
+        </p>
+
+    </div>
+</div>
+<br><br>
+
+{% endblock %}

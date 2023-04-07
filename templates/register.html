@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+{% block content %}
+
+
+<div class="content" style="background-image: url({{ url_for('static', filename='images/homeback.jpg') }});">
+    <h1 style="color: white;">Welcome to Advorrst: Movie Recommendation</h1>
+        <p>Advorrst is a web app for movie recommendation which give you a futuristic feel and could be interpreted as a combination of "advice" and "forest." It could be seen as a place where movie nerds can seek guidance and recommendations for movies, as if they were navigating through a dense forest of options. Advorrst designed to suggest movies to users based on the similarity to the movie you want to search. It also provides some useful details like movie ratings, cast, trailer and other important things. It typically utilizes a database of 5k+ english movies to recommend movies till year 2016 and generates movie with proper details about the movie also.
+        </p>
+
+    <br>
+    
+    <div id="login" class="login">
+        <form action="/register" method="post" autocomplete="off">
+            <h2 >Registration</h2>
+            <div class="text">
+                <p>Name</p>
+                <input type="text" name="name" required>
+            </div>
+        
+            <div class="text">
+                <p>Email Address</p>
+                <input type="email" name="address" required>
+            </div>
+    
+            <div class="text">
+                <p>Mobile Number</p>
+                <input type="number" name="contact" required>
+            </div>
+        
+            <div class="text">
+                <p>Password</p>
+                <input type="password" name="mail" required>
+            </div>
+        
+            <div class="but">
+                <button  class="but1" type="submit">Register</button>
+                <a href="{{url_for('index')}}" class="but2">Go Back</a>
+            </div>
+        </form>   
+    </div>
+    <br><br>
+    <p style="color: red;">Currently in our collection, we have around 5k+ english movies to recommend till year 2016.And going to expend in future.<br>Note: To use our app kindly login/register. We'll just save data just for login purpose and to make app safe for both user & us.</p>
+</div>
+
+{% endblock %}

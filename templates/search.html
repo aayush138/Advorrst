@@ -1,0 +1,28 @@
+{% extends 'app.html' %}
+{% block data %}
+
+
+<h2 >Searching Result For:
+    <form action="/app/search/details/{{ search_name }}" method="post">
+        <button type="submit" style="background:none; border:none;font-size: 1.2em; cursor: pointer;">{{ search_name }}</button>
+    </form>
+</h2>
+<div class="searchresult">
+    {% for i in range(length) %}
+        <div id="card" class="card">
+                <h3 >{{ movie_names[i] }}</h3>
+                    <p>Movie Id: {{ id[i] }}</p>
+                    <p>Year: {{ movie_date[i] }}</p>
+                    <p>Vote: {{ like[i] }}/10</p>
+                <br>
+            
+                <div class="but">
+                    <form action="/app/search/details/{{ movie_names[i] }}" method="post">
+                        <button type="submit" class="but2" >Details</button>
+                    </form>
+                </div>
+        </div>
+    {% endfor %}    
+</div>
+
+{% endblock %}

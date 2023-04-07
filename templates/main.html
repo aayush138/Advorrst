@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+        <link rel="icon" href="{{ url_for('static', filename='images/icon.png') }}">
+        <title>{{ title }}</title>
+    </head>
+
+    <body>
+        <!-- Additional SideNavbar (OffCanvas) -->
+        <div id="sidenav" class="sidenav">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="icon" style="width:200px;height:50px;align-self: center;margin: 1em;">
+                <!-- <h1 style="color:#E7ECEF;cursor: pointer;"><a href="{{ url_for('index') }}">Logo</a></h1> -->
+                <img src="{{ url_for('static', filename='images/cancel.svg') }}" alt="icon" style="width:30px;height:30px;margin: 1em;" onclick="closenav()">
+            </div>
+            <hr>
+
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <br>
+        
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+
+                    <div class='remove' style="display:{{ type1 }}">
+                        <li><a href="{{ url_for('index') }}#login">Login</a></li>
+                        <hr>
+        
+                        <li><a href="{{ url_for('register') }}#login" >Register</a></li>
+                    </div>
+
+                    <div class='remove' style="display:{{ type2 }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="24px" fill="#E7ECEF" class="bi bi-person-circle" viewBox="0 0 16 16" style="align-self: center;">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                        </svg>
+                        <li><a href="{{url_for('logout')}}" >{{session['name']}} | Logout</a></li>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+        <!-- End Additional SideNavbar (OffCanvas) -->
+
+        <div class="main">
+            {% include 'navbar.html' %}
+            
+
+            {% block content %}
+
+            {% endblock %}
+
+            
+            <div class="foot">
+                <h3>Copyright © <a href="#">Ayush Kumar</a> | Made with ❤</h3>
+            </div>
+        </div>
+
+        <script>
+            // Sidebar
+            function opennav(){
+                document.getElementById("sidenav").style.width="100%";
+            }
+
+            function closenav(){
+                document.getElementById("sidenav").style.width="0";
+            }
+        </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,9 @@
+{% extends 'app.html' %}
+{% block data %}
+
+<h3 style="color:red;">No Result Found...</h3>
+<h3>Please! Check your Keyword Or Search for different movie.</h3>
+<img src="{{ url_for('static', filename='images/pagenotfound.gif') }}" alt="Not Found">
+<h3 >Movie you're trying to search is not found in our database.</h3>
+
+{% endblock %}

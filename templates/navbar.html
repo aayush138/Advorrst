@@ -1,0 +1,29 @@
+<div class="head">
+    <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="icon" style="width:145px;height:45px;"></a>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li>|</li>
+
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li>|</li>
+
+            <div style="display:{{ type1 }};">
+                <li><a href="{{ url_for('index') }}#login">Login</a></li>
+                <li>|</li>
+
+                <li><a href="{{ url_for('register') }}#login" >Register</a></li>
+            </div>
+            
+            <div style="display:{{ type2 }};">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="24px" fill="#E7ECEF" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg>
+                <li><a href="{{url_for('logout')}}" >{{session['name']}} | Logout</a></li>
+            </div>
+        </ul>
+        <img id="menu" src="{{ url_for('static', filename='images/nav.svg') }}" alt="menu" style="width:3.125em;height:3.125em;" onclick="opennav()">
+        
+    </nav>
+</div>

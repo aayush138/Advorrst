@@ -1,0 +1,80 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<br>
+<h1>About Us</h1>
+
+            <div class="about">
+                <div class="tell">
+                    <h2>About The Project</h2>
+                    <p>
+                        Advorrst is a web app for movie recommendation which give you a futuristic feel and could be interpreted as a combination of "advice" and "forest." It could be seen as a place where movie nerds can seek guidance and recommendations for movies, as if they were navigating through a dense forest of options. Advorrst designed to suggest movies to users based on the similarity to the movie you want to search. It also provides some useful details like movie ratings, cast, trailer and other important things. It typically utilizes a database of 5k+ english movies to recommend movies till year 2016 and generates movie with proper details about the movie also.
+                    </p>
+                    <br><br>
+
+                    <h2>TechStack</h2>
+                    <p>
+                        The tech stack I used to build Advorrst movie recommendation WebApp:
+                        <ul>
+                            <li>
+                                <h3>FrontEnd</h3><br>
+                                <ul>
+                                    <li><u><b>Html :</b></u> For Providing Page Structure to WebApp.</li><br>
+                                    <li><u><b>Css :</b></u> Pure vanilla css is used to make UI Alive.</li><br>
+                                    <li><u><b>JavaScript :</b></u> To Provide dynamic functionality to UI.</li><br>
+                                    <li><u><b>Others :</b></u> Montserrat font is used by import from google font and Svg icons are taken from bootstrap website.</li>
+                                </ul>
+                            </li>
+                            <br><br>
+                            
+                            <li>
+                                <h3>BackEnd</h3><br>
+                                <ul>
+                                    <li><u><b>Flask :</b></u> Providing base structure and server-side logic to WebApp.</li><br>
+                                    <li><u><b>DataBase :</b></u> SQLite DataBase is used to store user data.</li><br>
+                                    <li><u><b>CSV :</b></u> For modelling and generating movie recommendation.</li><br>
+                                    <li><u><b>Others :</b></u> Montserrat font is used by import from google font and Svg icons are taken from bootstrap website.</li>
+                                </ul>
+                            </li> 
+                            <br><br>
+                            
+                            <li>
+                                <h3>APIs & Libraries</h3><br>
+                                <ul>
+                                    <li><u><b>Pandas Library :</b></u> Read and preparing CSV movie data for processing.</li><br>
+                                    <li><u><b>Sklearn Library :</b></u> Scikit-Learn machine learning Library used for generate and fit movie recommendations.</li><br>
+                                    <li><u><b>Difflib Library :</b></u> For comparing close match movie if user makes spell mistakes.</li><br>
+                                    <li><u><b>OpenAI API :</b></u> To interact with OpenAI's ChatGPT for generating a brief description about the movie.</li><br>
+                                    <li><u><b>TMDb API :</b></u> To Retrieve Movie Posters and Trailers Dynamically.</li>
+                                </ul>
+                            </li> 
+                            <br><br>
+
+                            <li>
+                                <h3>Others</h3><br>
+                                <ul>
+                                    <li><u><b>Programming Lang. :</b></u> Python(core), JavaScript, SQl.</li><br>
+                                    <li><u><b>DataBase :</b></u> SQLite DataBase is used to store user data.</li><br>
+                                    <li><u><b>Heroku :</b></u> For hosting the Flask WebApp and available app for wide range of devices.</li><br>
+                                </ul>
+                            </li> 
+                            <br><br>
+                        </ul>
+                    </p>
+                    <br><br>
+                </div>
+                
+
+                <div class="contact">
+                    <img src="{{ url_for('static', filename='images/about.png') }}" alt="about" >
+
+                    <div class="icon">
+                        <a href="#"><img src="{{ url_for('static', filename='images/website.svg') }}" alt="site"></a>
+                        <a href="#"><img src="{{ url_for('static', filename='images/github.svg') }}" alt="github"></a>
+                        <a href="https://www.linkedin.com/in/ayush838/"><img src="{{ url_for('static', filename='images/linkedin.svg') }}" alt="linkedin"></a>
+                        <a href="https://www.instagram.com/k_ayush_38/"><img src="{{ url_for('static', filename='images/instagram.svg') }}" alt="insta"></a>
+                    </div>
+                </div>    
+            </div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<br><br>
+<div class="movie">
+    <h3>Let's Find A Good Movie For You...</h3>
+    <h4>( Enter Exact Movie Name )</h4><br>
+    <div class="sbox" onclick="search()">
+        <form action="/app/search" method="post" autocomplete="off">
+            <input type="text" title="MovieSearch" name="movie_name" placeholder="Search..." required>
+            <button type="submit"><img src="{{ url_for('static', filename='images/search.svg') }}" alt="search"></button>
+        </form>
+    </div>
+    
+    <br>
+
+    {% block data %}
+
+    {% endblock %}
+
+    <br><br>
+</div>    
+
+<script>
+    function search(){
+        document.querySelector(".sbox").style.borderStyle="inset";
+
+    }
+</script>
+
+{% endblock %}
