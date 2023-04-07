@@ -24,7 +24,7 @@ OPENAI_API_KEY=os.getenv('API_KEY1')
 TMDB_API=os.getenv('API_KEY2')
 
 con=sqlite3.connect("database.db")
-con.execute("create table if not exists customer(pid integer primary key,name text,address text,contact integer,mail text)")
+con.execute("create table if not exists customer(pid integer primary key,name text,address text,contact text,mail text)")
 con.close()
 
 # Preparing Model for further use.
