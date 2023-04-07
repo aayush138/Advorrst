@@ -28,7 +28,7 @@ con.execute("create table if not exists customer(pid integer primary key,name te
 con.close()
 
 # Preparing Model for further use.
-df2 = pd.read_csv('url_for("static", filename="model/tmdb.csv")' ,engine="python")
+df2 = pd.read_csv("tmdb.csv" ,engine="python")
 pd.set_option('display.max_colwidth', None)
 
 count = CountVectorizer(stop_words='english')
