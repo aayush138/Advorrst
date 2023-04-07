@@ -57,8 +57,8 @@ def index():
 @app.route('/login',methods=["GET","POST"])
 def login():
     if request.method=='POST':
-        name=request.form['name']
-        password=request.form['password']
+        name=request.form['name'].strip()
+        password=request.form['password'].strip()
         con=sqlite3.connect("database.db")
         con.row_factory=sqlite3.Row
         cur=con.cursor()
@@ -78,10 +78,10 @@ def login():
 def register():
     if request.method=='POST':
         try:
-            name=request.form['name']
-            address=request.form['address']
-            contact=request.form['contact']
-            mail=request.form['mail']
+            name=request.form['name'].strip()
+            address=request.form['address'].strip()
+            contact=request.form['contact'].strip()
+            mail=request.form['mail'].strip()
             con=sqlite3.connect("database.db")
             cur=con.cursor()
             cur.execute("insert into customer(name,address,contact,mail)values(?,?,?,?)",(name,address,contact,mail))
@@ -138,7 +138,7 @@ def get_recommendations(title):
 # Recommendation ready. Now have to pass data to detail page.
 @app.route('/app/search', methods=['POST'])
 def searchmoiv():
-    m_name = difflib.get_close_matches(request.form["movie_name"],all_titles,n=1)
+    m_name = difflib.get_close_matches(request.form["movie_name"].strip(),all_titles,n=1)
 
     if len(m_name)==0:
         return render_template("notfound.html", type1="none", type2="inline-flex", title="4O4: MovieNotFound")
