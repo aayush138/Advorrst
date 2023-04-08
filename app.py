@@ -24,7 +24,7 @@ OPENAI_API_KEY=os.getenv('API_KEY1')
 TMDB_API=os.getenv('API_KEY2')
 
 con=sqlite3.connect("database.db")
-con.execute("create table if not exists customer(pid integer primary key,name text,address text,contact text,mail text)")
+con.execute("create table if not exists customer(pid integer primary key,name text,address text,contact text,pwd text)")
 con.close()
 
 # Preparing Model for further use.
@@ -62,37 +62,44 @@ def login():
         con=sqlite3.connect("database.db")
         con.row_factory=sqlite3.Row
         cur=con.cursor()
-        cur.execute("select * from customer where name=? and mail=?",(name,password))
+        cur.execute("select * from customer where name=? and pwd=?",(name,password))
         data=cur.fetchone()
 
         if data:
             session["name"]=data["name"]
-            session["mail"]=data["mail"]
+            session["pwd"]=data["pwd"]
             return redirect("app")
         else:
-            flash("Username and Password Mismatch","danger")
+            flash("Username and Password Mismatch")
     return redirect(url_for("index"))    
 
 
 @app.route('/register',methods=['GET','POST'])
 def register():
-    if request.method=='POST':
+    if request.method=='POST':   
         try:
             name=request.form['name'].strip()
-            address=request.form['address'].strip()
+            address=request.form['address'].strip().lower()
             contact=request.form['contact'].strip()
-            mail=request.form['mail'].strip()
+            pwd=request.form['pwd'].strip()
             con=sqlite3.connect("database.db")
             cur=con.cursor()
-            cur.execute("insert into customer(name,address,contact,mail)values(?,?,?,?)",(name,address,contact,mail))
-            con.commit()
-            flash("Record Added  Successfully","success")
+
+            cur.execute("select * from customer where name=? and address=?",(name,address))
+            data=cur.fetchone()
+    
+            if data:  
+                flash("Record already Exists") 
+            else:  
+                cur.execute("insert into customer(name,address,contact,pwd)values(?,?,?,?)",(name,address,contact,pwd))
+                con.commit()
+                flash("Record Added  Successfully")     
         except:
-            flash("Error in Insert Operation","danger")
+            flash("Error in Insert Operation")
         finally:
             return redirect(url_for("index"))
             con.close()
-
+            
     return render_template('register.html', type1="inline-flex", type2="none", title="Register")
 
 @app.route('/logout')
